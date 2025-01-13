@@ -6,7 +6,7 @@ try:
 except:
     s("pip install requests")
 
-bot = TeleBot("7805179496:AAF-ygkfSWxtVf-oGGV1qiXLsaNpP_O7EyE")
+bot = TeleBot("")
 
 class Wkaie:
     def banner():
