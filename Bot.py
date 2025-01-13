@@ -2,11 +2,10 @@ try:
     from os import system as s
     import requests as r
     from telebot import TeleBot
-    import re
 except:
     s("pip install requests")
 
-bot = TeleBot("")
+bot = TeleBot("<your token>")
 
 class Wkaie:
     def banner():
@@ -25,17 +24,15 @@ class Wkaie:
         
         return book, bookName, chapter, ref, hadith
         
-@bot.message_handler(func=lambda messx: True)
+@bot.message_handler(commands=['hadith', 'Hadith'])
 def hadith(messx):
-    print(str(messx.text).lower)
-    if re.search("^hello", str(messx.text).lower):
-        book = Wkaie.generator()
-        bot.send_message(messx.chat.id, text=book[0], parse_mode="HTML")
-        bot.send_message(messx.chat.id, text=book[1], parse_mode="HTML")
-        bot.send_message(messx.chat.id, text=book[2], parse_mode="HTML")
-        bot.send_message(messx.chat.id, text=book[3], parse_mode="HTML")
-        bot.send_message(messx.chat.id, text=book[4], parse_mode="HTML")
-        print(messx.chat.first_name, "runned")
+    book = Wkaie.generator()
+    bot.send_message(messx.chat.id, text=book[0], parse_mode="HTML")
+    bot.send_message(messx.chat.id, text=book[1], parse_mode="HTML")
+    bot.send_message(messx.chat.id, text=book[2], parse_mode="HTML")
+    bot.send_message(messx.chat.id, text=book[3], parse_mode="HTML")
+    bot.send_message(messx.chat.id, text=book[4], parse_mode="HTML")
+    print(messx.chat.first_name, "runned")
 
 if __name__ == "__main__":
     Wkaie.banner()    
